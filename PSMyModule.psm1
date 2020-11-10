@@ -8,5 +8,17 @@ if(!(Test-Path -Path $path))
 }
 
 # load all dependencies - ps1 scripts files
-Resolve-Path $path\Settings\*.ps1 | ForEach-Object { . $_.ProviderPath } 
-Resolve-Path $path\Functions\*.ps1 | ForEach-Object { . $_.ProviderPath } 
+Resolve-Path $path\*\*.ps1 | ForEach-Object { . $_.ProviderPath } 
+# Resolve-Path $path\Functions\*.ps1 | ForEach-Object { . $_.ProviderPath } 
+
+function Get-MyModuleFullName {
+    [CmdletBinding()]
+    param (
+        #OptionalParameters
+    )
+    
+    # load settings from settings.json
+    $settings = Get-Settings -ErrorAction Stop
+    
+    Invoke-MyModulePrintFullName -FirstName $settings.FirstName -LastName $settings.LastName -ErrorAction Stop
+}
