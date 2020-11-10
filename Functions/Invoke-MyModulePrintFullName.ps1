@@ -9,7 +9,7 @@ function Invoke-MyModulePrintFullName {
     
     try {
         Write-Host "Printing full name from settings.json: " -NoNewline
-        Write-Host $FirstNam, $LastName "🤔" -ForegroundColor Green 
+        Write-Host $FirstName, $LastName "🤔" -ForegroundColor Green 
     }
     catch {
         throw "Failed to print fullname."
