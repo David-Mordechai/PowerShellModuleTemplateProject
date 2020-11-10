@@ -19,6 +19,14 @@ function Get-MyModuleFullName {
     
     # load settings from settings.json
     $settings = Get-Settings -ErrorAction Stop
-    
-    Invoke-MyModulePrintFullName -FirstName $settings.FirstName -LastName $settings.LastName -ErrorAction Stop
+
+    # example one for calling function with parameters
+    # Invoke-MyModulePrintFullName -FirstName $settings.FirstName -LastName $settings.LastName -ErrorAction Stop
+
+    # example two for calling function with parameters
+    $params = @{
+        FirstName = $settings.FirstName
+        LastName = $settings.LastName
+    }
+    Invoke-MyModulePrintFullName @params -ErrorAction Stop
 }
